@@ -1,0 +1,61 @@
+{
+  "mappings": {
+    "properties": {
+      "userId": { "type": "long" },
+      "firstName": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+      "lastName": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+      "nickname": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+      "email": { "type": "keyword" },
+      "phoneNumber": { "type": "keyword" },
+      "birthDate": { "type": "long" },
+      "age": { "type": "integer" },
+      "gender": { "type": "integer" },
+      "interestedInGender": { "type": "integer" },
+      "bio": { "type": "text" },
+      "cityCode": { "type": "integer" },
+      "height": { "type": "integer" },
+      "weight": { "type": "integer" },
+      "longitude": { "type": "float" },
+      "latitude": { "type": "float" },
+
+      "location": { "type": "geo_point" },
+
+      "ethnicity": { "type": "keyword" },
+      "nationality": { "type": "keyword" },
+      "zodiacSign": { "type": "keyword" },
+      "personalityType": { "type": "keyword" },
+      "religion": { "type": "keyword" },
+      "university": { "type": "text" },
+      "occupation": { "type": "keyword" },
+      "expirience": { "type": "integer" },
+      "incomeRange": { "type": "long" },
+      "hobbies": { "type": "text" },
+      "exerciseFrequency": { "type": "keyword" },
+      "pets": { "type": "boolean" },
+      "languagesSpoken": { "type": "text" },
+      "socialMediaApps": { "type": "text" },
+
+      "preferredAgeMin": { "type": "integer" },
+      "preferredAgeMax": { "type": "integer" },
+      "preferredHeightMin": { "type": "integer" },
+      "preferredHeightMax": { "type": "integer" },
+      "preferredDistanceKm": { "type": "boolean" },
+
+      "accountCreatedAt": { "type": "long" },
+      "lastLogin": { "type": "long" },
+      "accountStatus": { "type": "keyword" },
+      "phoneVerified": { "type": "boolean" },
+      "lastSubscriptionPaymentDate": { "type": "long" },
+      "subscriptionStartDate": { "type": "long" },
+      "subscriptionExpiryDate": { "type": "long" },
+
+      "likesGivenCount": { "type": "long" },
+      "likesReceivedCount": { "type": "long" },
+      "matchesCount": { "type": "long" },
+      "unmatchedCount": { "type": "long" },
+      "matchRate": { "type": "double" },
+      "reportsReceivedCount": { "type": "long" },
+      "profileViewsCount": { "type": "long" }
+    }
+  }
+}
