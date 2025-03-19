@@ -2,6 +2,7 @@ package com;
 
 import com.entity.SQLUser;
 import com.service.ElasticService;
+import com.service.RamSearchService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +25,15 @@ public class DataController {
     UserService userService;
     @Autowired
     ElasticService elasticService;
+    @Autowired
+    RamSearchService ramSearchService;
     int r = 0;
-    @GetMapping("filter")
-    public ResponseEntity<List<SQLUser>> filteredSearch(@RequestBody SearchRequest request) {
+    @GetMapping("db-search")
+    public ResponseEntity<List<SQLUser>> dbSearch(@RequestBody SearchRequest request) throws Exception {
       Long start = System.currentTimeMillis();
       System.out.println(" - Thread: " + Thread.currentThread().getName() + "REQUEST IN at: " + LocalDateTime.now());
 
-        ResponseEntity<List<SQLUser>> res = ResponseEntity.ok(userService.filteredSearch(
+        ResponseEntity<List<SQLUser>> res = ResponseEntity.ok(userService.dbSearch(
                 request.getLongitude(),
                 request.getLatitude(),
                 request.getDistanceInMeters(),
@@ -81,14 +84,14 @@ public class DataController {
     }
     @PostMapping("load")
     public ResponseEntity<?> loadRam() throws SQLException {
-        userService.loadToRam();
+        ramSearchService.loadToRam();
         return ResponseEntity.ok("Load Ram");
     }
     @PostMapping("ram-search")
-    public ResponseEntity<?> searchRam(@RequestBody SearchRequest request) {
+    public ResponseEntity<?> searchRam(@RequestBody SearchRequest request) throws Exception {
         Long start = System.currentTimeMillis();
         System.out.println(" - Thread: " + Thread.currentThread().getName() + "REQUEST IN at: " + LocalDateTime.now());
-        ResponseEntity<?> response = ResponseEntity.ok(userService.ramSearch(
+        ResponseEntity<?> response = ResponseEntity.ok(ramSearchService.ramSearch(
                 request.getLongitude(),
                 request.getLatitude(),
                 request.getDistanceInMeters(),
