@@ -46,6 +46,4 @@ public interface UserRepository extends JpaRepository<SQLUser, Long> {
 
     List<SQLUser> findByUserIdIn(List<Long> ids);
 
-
-
 }

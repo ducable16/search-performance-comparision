@@ -153,7 +153,7 @@ public class UserJdbcDao {
         return users;
     }
 
-    public List<SQLUser> queryUsersWithUserId(List<Long> userIds) throws Exception {
+    public List<SQLUser> queryUsersWithUserId(List<Integer> userIds) throws Exception {
         List<SQLUser> users = new ArrayList<>();
         String url = "jdbc:postgresql://localhost:5432/db_cuc_to";
         String user = "postgres";
